@@ -1,5 +1,6 @@
 package com.seleniumeasy;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -11,6 +12,10 @@ public class BasicRadiobutton {
     public BasicRadiobutton(WebDriver driver)
     {
         this.driver = driver;
+    }
+
+    public void navigateTo(){
+        driver.get("http://www.seleniumeasy.com/test/basic-radiobutton-demo.html");
     }
 
     public void singleRadio() {
@@ -30,5 +35,12 @@ public class BasicRadiobutton {
         }
     }
 
+    public void assertion(){
+        Assert.assertTrue(driver.getPageSource().contains("Radio button 'Male' is checked"));
+        Assert.assertFalse(driver.getPageSource().contains("Radio button 'Female' is checked"));
+
+        Assert.assertTrue(driver.getPageSource().contains("Sex : Female"));
+        Assert.assertTrue(driver.getPageSource().contains("Age group: 15 - 50"));
+    }
 
 }

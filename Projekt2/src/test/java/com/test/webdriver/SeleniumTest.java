@@ -12,90 +12,72 @@ import com.seleniumeasy.BasicCheckbox;
 
 public class SeleniumTest {
 
+    public WebDriver driver;
+
     @Before
     public void setUp(){
         System.setProperty("webdriver.gecko.driver","J:/Selenium/geckodriver-v0.19.1-win64/geckodriver.exe");
+        driver = new FirefoxDriver();
     }
 
 
     @Test
     public void testSelenium1(){
-
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.seleniumeasy.com/test/basic-first-form-demo.html");
-
         SimpleForm object = new SimpleForm(driver);
 
+        object.navigateTo();
         object.clickOnTextBox("TEST");
         object.totalAB("10","27");
 
-        Assert.assertTrue(driver.getPageSource().contains("37"));
-        Assert.assertTrue(driver.getPageSource().contains("TEST"));
-
+        object.assertion();
         driver.quit();
     }
 
     @Test
     public void testSelenium2(){
-
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.seleniumeasy.com/test/basic-checkbox-demo.html");
-
         BasicCheckbox object = new BasicCheckbox(driver);
 
+        object.navigateTo();
         object.clickOnCheckBox();
         object.clickOnCheckBoxButton();
 
-        Assert.assertTrue(driver.getPageSource().contains("Success - Check box is checked"));
-
+        object.assertion();
         driver.quit();
 
     }
 
     @Test
     public void testSelenium3(){
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.seleniumeasy.com/test/basic-radiobutton-demo.html");
-
         BasicRadiobutton object = new BasicRadiobutton(driver);
 
+        object.navigateTo();
         object.singleRadio();
         object.groupRadio();
 
-        Assert.assertTrue(driver.getPageSource().contains("Radio button 'Male' is checked"));
-        Assert.assertFalse(driver.getPageSource().contains("Radio button 'Female' is checked"));
-
-        Assert.assertTrue(driver.getPageSource().contains("Sex : Female"));
-        Assert.assertTrue(driver.getPageSource().contains("Age group: 15 - 50"));
+        object.assertion();
         driver.quit();
     }
 
     @Test
     public void testSelenium4(){
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.seleniumeasy.com/test/basic-select-dropdown-demo.html");
-
         BasicDropdown object = new BasicDropdown(driver);
 
+        object.navigateTo();
         object.chooseDay();
         object.multipleSelect();
 
-        Assert.assertTrue(driver.getPageSource().contains("Day selected :- Wednesday"));
-        Assert.assertTrue(driver.getPageSource().contains("Options selected are : Texas,New Jersey,California"));
+        object.assertion();
+        driver.quit();
     }
 
     @Test
     public void testSelenium5(){
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.seleniumeasy.com/test/ajax-form-submit-demo.html");
-
         AjaxForm object = new AjaxForm(driver);
 
+        object.navigateTo();
         object.AjaxFormSubmit();
 
-        Assert.assertTrue(driver.getPageSource().contains("Form submited Successfully!"));
-
-
+        object.assertion();
         driver.quit();
 
     }
@@ -103,11 +85,9 @@ public class SeleniumTest {
 
     @Test
     public void testSelenium6(){
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.seleniumeasy.com/test/input-form-demo.html");
-
         InputForm object = new InputForm(driver);
 
+        object.navigateTo();
         object.fillForm();
 
         driver.quit();
@@ -115,47 +95,45 @@ public class SeleniumTest {
 
     @Test
     public void testSelenium7(){
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.seleniumeasy.com/test/jquery-date-picker-demo.html");
-
         JQueryDatePicker object = new JQueryDatePicker(driver);
 
+        object.navigateTo();
         object.pickFrom();
         object.pickTo();
 
+        object.assertionFrom();
+        object.assertionTo();
         driver.quit();
     }
 
     @Test
     public void testSelenium8(){
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.seleniumeasy.com/test/jquery-download-progress-bar-demo.html");
-
         JQueryDownloadBar object = new JQueryDownloadBar(driver);
 
+        object.navigateTo();
         object.startDownload();
+
+        object.assertion();
+        object.finishDownload();
         driver.quit();
     }
 
     @Test
     public void testSelenium9(){
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.seleniumeasy.com/test/table-search-filter-demo.html");
-
         TableSearchFilter object = new TableSearchFilter(driver);
 
+        object.navigateTo();
         object.filter();
 
+        object.assertion();
         driver.quit();
     }
 
     @Test
     public void testSelenium10(){
-        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.seleniumeasy.com/test/table-records-filter-demo.html");
-
         TableRecords object = new TableRecords(driver);
 
+        object.navigateTo();
         object.filterTable();
 
         driver.quit();

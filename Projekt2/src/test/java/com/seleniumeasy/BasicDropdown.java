@@ -1,6 +1,7 @@
 package com.seleniumeasy;
 
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +17,10 @@ public class BasicDropdown {
     public BasicDropdown(WebDriver driver)
     {
         this.driver = driver;
+    }
+
+    public void navigateTo(){
+        driver.get("http://www.seleniumeasy.com/test/basic-select-dropdown-demo.html");
     }
 
     public void chooseDay(){
@@ -48,6 +53,11 @@ public class BasicDropdown {
         }
 
 
+    }
+
+    public void assertion(){
+        Assert.assertTrue(driver.getPageSource().contains("Day selected :- Wednesday"));
+        Assert.assertTrue(driver.getPageSource().contains("Options selected are : Texas,New Jersey,California"));
     }
 
 

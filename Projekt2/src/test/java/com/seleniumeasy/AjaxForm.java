@@ -1,5 +1,6 @@
 package com.seleniumeasy;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -8,6 +9,10 @@ public class AjaxForm {
 
     public AjaxForm(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public void navigateTo(){
+        driver.get("http://www.seleniumeasy.com/test/ajax-form-submit-demo.html");
     }
 
     public void AjaxFormSubmit() {
@@ -24,5 +29,9 @@ public class AjaxForm {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void assertion(){
+        Assert.assertTrue(driver.getPageSource().contains("Form submited Successfully!"));
     }
 }

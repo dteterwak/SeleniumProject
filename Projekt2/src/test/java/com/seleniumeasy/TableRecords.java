@@ -1,5 +1,6 @@
 package com.seleniumeasy;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -8,6 +9,10 @@ public class TableRecords {
 
     public TableRecords(WebDriver driver){
         this.driver = driver;
+    }
+
+    public void navigateTo(){
+        driver.get("http://www.seleniumeasy.com/test/table-records-filter-demo.html");
     }
 
     public void filterTable(){
@@ -23,6 +28,9 @@ public class TableRecords {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        Assert.assertTrue(driver.getPageSource().contains("(Red)"));
+
         driver.findElement(By.xpath("//button[@data-target='all']")).click();
         try{
             Thread.sleep(500);

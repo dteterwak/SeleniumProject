@@ -1,5 +1,6 @@
 package com.seleniumeasy;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -8,6 +9,10 @@ public class BasicCheckbox {
 
     public BasicCheckbox(WebDriver driver){
         this.driver = driver;
+    }
+
+    public void navigateTo(){
+        driver.get("http://www.seleniumeasy.com/test/basic-checkbox-demo.html");
     }
 
     public  void clickOnCheckBox(){
@@ -37,5 +42,9 @@ public class BasicCheckbox {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void assertion(){
+        Assert.assertTrue(driver.getPageSource().contains("Success - Check box is checked"));
     }
 }

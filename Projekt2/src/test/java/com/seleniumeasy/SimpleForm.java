@@ -1,5 +1,6 @@
 package com.seleniumeasy;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,6 +12,10 @@ public class SimpleForm {
     public SimpleForm(WebDriver driver)
     {
         this.driver = driver;
+    }
+
+    public void navigateTo(){
+        driver.get("http://www.seleniumeasy.com/test/basic-first-form-demo.html");
     }
 
     public void clickOnTextBox(String text)
@@ -40,5 +45,10 @@ public class SimpleForm {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void assertion(){
+        Assert.assertTrue(driver.getPageSource().contains("37"));
+        Assert.assertTrue(driver.getPageSource().contains("TEST"));
     }
 }
